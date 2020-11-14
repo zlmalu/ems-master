@@ -75,7 +75,7 @@
                 	// 如果有info样式则删除，没有则添加
                 	$(this).toggleClass('info');
                 } );
-             	
+
                 // 添加工具栏按钮，找到设置分页的div，并添加创建和批量删除按钮的a标签
                 $('#' + tableId + '_length').append (" <a class='btn btn-primary btn-sm' onclick='createEmsClassRoom();'>创建</a> <a class='btn btn-primary btn-warning btn-sm' onclick='deleteEmsClassRooms();'>批量删除</a>");
             });
@@ -83,11 +83,11 @@
             function createEmsClassRoom () {
             	location.href = "${pageContext.request.contextPath}/ems/classRoom/create";
             }
-            
+
             function updateEmsClassRoom (id) {
             	location.href = "${pageContext.request.contextPath}/ems/classRoom/update?id=" + id;
             }
-            
+
             function deleteEmsClassRoom (id) {
             	if (!confirm ('确定要删除选定的教室吗？')) {
             		return;
@@ -98,11 +98,11 @@
 				    	var table = $('#' + tableId).DataTable();
 				    	// 删除选中的行
 		    			table.rows('.info').remove().draw(false);
-		    		} 
+		    		}
 		    		alert (result.message);
 		    	});
             }
-            
+
             function deleteEmsClassRooms () {
             	// 获取DataTable
 		    	var tableId = 'emsClassRoomTable';
