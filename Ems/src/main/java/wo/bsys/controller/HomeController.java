@@ -1,5 +1,6 @@
 package wo.bsys.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import wo.bsys.dto.DictionaryDto;
 import wo.bsys.service.CoreService;
+import wo.bsys.service.DictionaryService;
 import wo.bsys.util.BSysConstant;
 import wo.bsys.util.BSysUtil;
 import wo.bsys.vo.WoMenu;
@@ -20,7 +23,9 @@ import wo.bsys.vo.WoUser;
 @Controller
 @SessionAttributes(BSysConstant.SESSION_USER)
 public class HomeController {
-	
+	@Resource
+	private DictionaryService dictionaryService;
+
 	@RequestMapping("/")
 	String toMain (String menu, Map<String, Object> map) {
 		try {
@@ -41,6 +46,8 @@ public class HomeController {
 					}
 				}
 			}
+			List<DictionaryDto> semesters = dictionaryService.getAllByDicType("semester");
+			map.put("semesters",semesters);
 			return "main";
 		} catch (Exception e) {
 			return "redirect:/login";

@@ -95,10 +95,10 @@ public class TeacherController {
 
     @GetMapping("/teachercourse/list")
     @ResponseBody
-    List<CourseTableDto> teaCourse(Map<String, Object> map) {
+    List<CourseTableDto> teaCourse(Map<String, Object> map,String sid) {
         TeacherDto teacherDto = (TeacherDto) map.get("teacherDto");
         String tId = teacherDto.getJobNo();
-        return teacherService.getTeacherListBySemester(tId, "6");
+        return teacherService.getTeacherListBySemester(tId, sid);
     }
 
     @RequestMapping("/studentinfo/list")
