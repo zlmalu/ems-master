@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="com.dream.ems.dto.MajorDto" %>
 <%
-	MajorDto  major = (MajorDto)request.getAttribute("major");
+
 %>
 <div id="page-wrapper">
 	<div class="row">
