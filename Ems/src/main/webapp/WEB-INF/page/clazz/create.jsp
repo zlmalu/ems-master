@@ -12,23 +12,23 @@
 							action="${pageContext.request.contextPath}/ems/clazz/create"
 							method="post" enctype="multipart/form-data">
 										                <div class="form-group">
-			                    <label class="col-sm-2 control-label">id</label>
+			                    <label class="col-sm-2 control-label">ID</label>
 			                    <div class="col-sm-10">
-			                    	<input class="form-control" placeholder="请输入id" name="id">
+			                    	<input class="form-control" placeholder="请输入ID" name="id">
 			                    </div>
 			                </div>
 			                			                			                <div class="form-group">
-			                    <label class="col-sm-2 control-label">clazzName</label>
+			                    <label class="col-sm-2 control-label">名称</label>
 			                    <div class="col-sm-10">
-			                    	<input class="form-control" placeholder="请输入clazzName" name="clazzName">
+			                    	<input class="form-control" placeholder="请输入名称" name="clazzName">
 			                    </div>
 			                </div>
 			                			                			                			                <div class="form-group">
-								<label class="col-sm-2 control-label">major</label>
+								<label class="col-sm-2 control-label">专业</label>
 								<div class="input-group">
 									<input type="hidden" name="majorId">
 		                            <input type="text" class="form-control" name="majorName" readonly>
-		                            <span class="input-group-btn woSingleSelect" wo:url="ems/major/selector">
+		                            <span class="input-group-btn woSingleSelect" wo:url="collegeinfo/major/selector">
 		                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
 		                                </button>
 		                            </span>

@@ -137,6 +137,7 @@
 		
 		<!-- /#page-wrapper -->
 		<jsp:include page="<%=url%>" />
+		<%=url%>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->

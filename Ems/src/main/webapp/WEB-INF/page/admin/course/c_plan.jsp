@@ -12,6 +12,7 @@
     List<Clazz> clazzes = (List<Clazz>) request.getAttribute("clazzes");
     List<CourseTableDto> ctList = (List<CourseTableDto>) request.getAttribute("courseTableList");
     String semesterId = (String) request.getAttribute("semesterId");
+    String majorId = (String) request.getAttribute("majorId");
 %>
 <div id="page-wrapper">
     <div class="col-lg-12">
@@ -302,15 +303,19 @@
             // 课程改变事件
             $("#courseSelect").change(function () {
                 var courseId = $("#courseSelect option:selected").val();
+                var majorId = ${major.id};
                 $.ajax({
                     type: 'post',
                     url: '${pageContext.request.contextPath}/collegeinfo/course/changeCourse',
-                    data: "courseId=" + courseId,
+                    data: {
+                        courseId:courseId,
+                        majorId:majorId
+                    },
                     dataType: 'json',
                     success: function (result) {
                         var clazzes = result.content.clazzes;
+                        $("#clazzSelect").html("");
                         if (clazzes == null || clazzes == "") {
-                            $("#clazzSelect").html("");
                         } else {
                             for (var i in clazzes) {
                                 $("#clazzSelect").append("<option value='" + clazzes[i].id + "'>" + clazzes[i].clazzName + "</option>")

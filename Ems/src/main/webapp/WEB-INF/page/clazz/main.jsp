@@ -16,9 +16,9 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="emsClazzTable">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
-                                                                                <th>clazzName</th>
-                                                                                                                        <th>major</th>
+                                        <th>ID</th>
+                                                                                <th>名称</th>
+                                                                                                                        <th>专业</th>
                                                                                 <th>操作</th>
                                     </tr>
                                 </thead>
