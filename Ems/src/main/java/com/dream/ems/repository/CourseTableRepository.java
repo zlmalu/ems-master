@@ -26,8 +26,8 @@ public interface CourseTableRepository extends JpaRepository<CourseTable, Intege
 	@Query("select ct from CourseTable ct, Course c where c.id = ct.course.id  and ct.semester.id = ?1 and c.isOptional = 1")
 	Page<CourseTable> findAllByIsOptional(String semesterId, Pageable pageInput);
 
-	@Query("select ct from CourseTable ct, Course c where c.id = ct.course.id and c.name like ?1 and ct.major.id = ?2 and ct.semester.id = ?3 and c.isOptional = 1")
-	Page<CourseTable> findAllByIsOptionalAndNameLike(String string, String majorId, String semesterId, Pageable pageInput);
+	@Query("select ct from CourseTable ct, Course c where c.id = ct.course.id and c.name like ?1  and ct.semester.id = ?2 and c.isOptional = 1")
+	Page<CourseTable> findAllByIsOptionalAndNameLike(String string, String semesterId, Pageable pageInput);
 
 	@Query("select ct from CourseTable ct where ct.teacher.jobNo in ?1")
 	List<CourseTable> findAllByTeacherJobNoIn(List<String> jobNoes);

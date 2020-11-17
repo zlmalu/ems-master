@@ -134,7 +134,7 @@ public class CourseTableServiceImpl implements CourseTableService {
         if (WoUtil.isEmpty(searchContent)) {
             pageData = courseTableRepository.findAllByIsOptional("6", pageInput);
         } else {
-            pageData = courseTableRepository.findAllByIsOptionalAndNameLike("%" + searchContent + "%", majorId, "6", pageInput);
+            pageData = courseTableRepository.findAllByIsOptionalAndNameLike("%" + searchContent + "%","6", pageInput);
         }
         // 将PO转化为DTO
         return new WoPage<>(CourseTableDto.getDtos(pageData.getContent()), pageData.getTotalElements());
