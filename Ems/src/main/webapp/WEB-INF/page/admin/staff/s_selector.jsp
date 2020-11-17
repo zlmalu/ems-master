@@ -23,6 +23,7 @@
                                                                                 <th>入学时间</th>
                                                                                 <th>所属学院</th>
                                                                                 <th>所属专业</th>
+                                                                                <th>所属班级</th>
                                                                                                                         <th>操作</th>
                                     </tr>
                                 </thead>
@@ -46,6 +47,7 @@
                 	                	{ "data": "grade" , "orderable" : false},
                 	                	{ "data": "collegeName" , "orderable" : false},
                 	                	{ "data": "majorName" , "orderable" : false},
+                	                	{ "data": "clazzName" , "orderable" : false},
                 	                	                    // 下面在操作列中添加了修改和删除按钮
                     { "data": null , "orderable" : false, "defaultContent": "<a class='btn btn-primary btn-xs' name='update'>修改</a> <a class='btn btn-primary btn-warning btn-xs' name='delete'>删除</a>"}
                 ];
@@ -61,7 +63,7 @@
                     "serverSide": true, // 从服务端获取数据
                     "rowId" : 'stuNo',// 设置主键字段名称
                     "ajax": {
-                        "url": "${pageContext.request.contextPath}/ems/clazz/listStudents", // 请求列表数据的url
+                        "url": "${pageContext.request.contextPath}/staff/student/list", // 请求列表数据的url
                         "type": "GET" // http方法
                     },
                     "order": [ [ orderIndex, "${entity.orderableField.order}" ] ] , // 排序

@@ -81,11 +81,11 @@ public class ClazzServiceImpl implements ClazzService {
 		ExampleMatcher m = ExampleMatcher.matching();
 		Clazz qo = new Clazz();
 		if(!WoUtil.isEmpty(searchContent)) {
-			m.withMatcher("name", GenericPropertyMatchers.contains());
+			m=m.withMatcher("clazzName", GenericPropertyMatchers.contains());
 			qo.setClazzName(searchContent);
 		}
 		if(!WoUtil.isEmpty(params)){
-			m.withMatcher("major.id", GenericPropertyMatchers.exact());
+//			m.withMatcher("major.id", GenericPropertyMatchers.exact());
 			Major c = new Major();
 			c.setId(params);
 			qo.setMajor(c);

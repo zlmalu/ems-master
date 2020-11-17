@@ -7,10 +7,14 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
+import com.dream.ems.dto.ClazzDto;
+import com.dream.ems.dto.CollegeDto;
+import com.dream.ems.dto.MajorDto;
+import com.dream.ems.po.Clazz;
+import com.dream.ems.po.College;
+import com.dream.ems.po.Major;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 import com.dream.ems.dto.StudentDto;
 import com.dream.ems.po.Student;
@@ -44,6 +48,45 @@ public class StudentServiceImpl implements StudentService{
 		WoPage<StudentDto> pr = StudentDto.getPageData(pageData.getContent(), pageData.getTotalElements());
 		return pr;
 	}
+	@Override
+	public WoPage<StudentDto> getPageData(ClazzDto dto, Long start, Long length, String searchContent, String dir) {
+		ExampleMatcher m = ExampleMatcher.matching();
+		Student qo = new Student();
+		if(!WoUtil.isEmpty(searchContent)) {
+			m=m.withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains());
+			qo.setName(searchContent);
+		}
+		if(!WoUtil.isEmpty(dto.getId())){
+			m=m.withMatcher("clazz.id", ExampleMatcher.GenericPropertyMatchers.exact());
+			Clazz c = new Clazz();
+			c.setId(dto.getId());
+			qo.setClazz(c);
+		}
+		Example<Student> student = Example.of(qo, m);
+		Pageable p = PageRequest.of(start.intValue() / length.intValue(), length.intValue());
+		Page<Student> page = StudentRepository.findAll(student, p);
+		return new WoPage<StudentDto> (StudentDto.getDtos(page.getContent()), page.getTotalElements());
+	}
+	@Override
+	public WoPage<StudentDto> getPageData(Long start, Long length, String searchContent, String dir, String params) {
+		ExampleMatcher m = ExampleMatcher.matching();
+		Student qo = new Student();
+		if(!WoUtil.isEmpty(searchContent)) {
+			m.withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains());
+			qo.setName(searchContent);
+		}
+		if(!WoUtil.isEmpty(params)){
+			m.withMatcher("clazz.id", ExampleMatcher.GenericPropertyMatchers.exact());
+			Clazz c = new Clazz();
+			c.setId(params);
+			qo.setClazz(c);
+		}
+		Example<Student> student = Example.of(qo, m);
+		Pageable p = PageRequest.of(start.intValue() / length.intValue(), length.intValue());
+		Page<Student> page = studentRepository.findAll(student, p);
+		return new WoPage<StudentDto> (StudentDto.getDtos(page.getContent()), page.getTotalElements());
+	}
+
 	@Override
 	public void createStudent(StudentDto dto) {
 		Student po = dto.createPo();

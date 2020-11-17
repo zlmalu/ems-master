@@ -64,7 +64,7 @@
                 	// this表示a标签对应dom，$(this)将其转为jQuery对象，获取按钮所在行的json对象:ClazzDto
                     var data = table.row( $(this).parents('tr') ).data();
                     if ($(this).attr('name') == 'showStudents') {
-                                    		showStudentsEmsClazz(data.id);
+                                    		showStudentsEmsClazz(data.id,data.name);
                                     	}
                 	// 调用修改方法
                 	if ($(this).attr('name') == 'update') {
@@ -90,7 +90,7 @@
             }
             
             function showStudentsEmsClazz (id) {
-            	location.href = "${pageContext.request.contextPath}/ems/clazz/showStudents?id=" + id;
+            	location.href = "${pageContext.request.contextPath}/ems/clazz/showStudents?id="+ id;
             }
             function updateEmsClazz (id) {
             	location.href = "${pageContext.request.contextPath}/ems/clazz/update?id=" + id;

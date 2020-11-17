@@ -5,6 +5,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.dream.ems.dto.ClazzDto;
+import com.dream.ems.dto.CollegeDto;
+import com.dream.ems.dto.MajorDto;
+import com.dream.ems.vo.WoSelectorParams;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,11 +37,12 @@ import wo.bsys.vo.WoDataTable;
 import wo.bsys.vo.WoUser;
 import wo.common.entity.WoPage;
 import wo.common.exception.WoResultCode;
+import wo.common.util.WoJsonUtil;
 import wo.common.util.WoUtil;
 
 @Controller
 @RequestMapping("/staff/student")
-@SessionAttributes({BSysConstant.SESSION_USER,"studentInfo"})
+@SessionAttributes({BSysConstant.SESSION_USER,"studentInfo","clazz"})
 public class StudentController {
 	
 	private Logger LOG = LogManager.getLogger(StudentController.class);
@@ -58,7 +63,18 @@ public class StudentController {
 		WoPage<StudentDto> page = studentService.getPageData(start, length, searchContent, dir);
 		return new WoDataTable<StudentDto>(page, draw);
 	}
-	
+	@RequestMapping("/selector")
+	String loadSelector (WoSelectorParams params, Map<String,Object>map){
+		map.put("selectorParams", WoJsonUtil.toString(params));
+		return "admin/staff/s_selector";
+	}
+	@RequestMapping("/selector/list")
+	@ResponseBody
+	WoDataTable<StudentDto> getDataTable (Integer draw, Long start, Long length,
+										@RequestParam("search[value]") String searchContent, @RequestParam("order[0][dir]") String dir, String params, Map<String, Object> map){
+		WoPage<StudentDto> page = studentService.getPageData(start, length, searchContent, dir,params);
+		return new WoDataTable<>(page, draw);
+	}
 	@GetMapping("/create")
 	public String create(Map<String,Object>map){
 		List<College> colleges = collegeService.getAllCollege();

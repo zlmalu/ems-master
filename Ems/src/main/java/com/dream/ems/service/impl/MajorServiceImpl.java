@@ -96,7 +96,7 @@ public class MajorServiceImpl implements MajorService {
 		ExampleMatcher m = ExampleMatcher.matching();
 		Major qo = new Major();
 		if(!WoUtil.isEmpty(searchContent)) {
-			m.withMatcher("name", GenericPropertyMatchers.contains());
+			m=m.withMatcher("name", GenericPropertyMatchers.contains());
 			qo.setName(searchContent);
 		}
 		if(!WoUtil.isEmpty(params)){

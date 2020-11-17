@@ -20,6 +20,9 @@ public interface StudentRepository extends JpaRepository<Student, String> {
 	@Query("select s from Student s where s.major.id = ?1")
 	List<Student> findAllStudentByMajorId(String majorId);
 
+	@Query("select s from Student s where s.name like  ?1")
+	List<Student> findAllStudentByNameLike(String name);
+
 	@Query("select s from Student s where s.clazz.id = ?1")
     List<Student> findAllByClazz(String id);
 }

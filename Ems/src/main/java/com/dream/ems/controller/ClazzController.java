@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.dream.ems.dto.StudentDto;
+import com.dream.ems.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +29,7 @@ import wo.bsys.util.BSysConstant;
  */
 @Controller
 @RequestMapping("/ems/clazz")
-@SessionAttributes(names = BSysConstant.SESSION_USER)
+@SessionAttributes({BSysConstant.SESSION_USER,"studentInfo","clazz"})
 public class ClazzController {
 
 	/**
@@ -35,7 +37,9 @@ public class ClazzController {
 	 */
     @Resource // @Autowired
 	private ClazzService clazzService;
-	
+
+	@Resource
+	private StudentService studentService;
 	/**
 	 * @param draw DataTable控件请求序列号,返回数据时需要设置该值
 	 * @param start 当前页开始索引,从0开始
@@ -95,10 +99,17 @@ public class ClazzController {
 	public String showStudents (String id, Map<String, Object> map) {
 		ClazzDto dto = clazzService.getById (id);
 		map.put("url", "clazz/students.jsp");
-		map.put("formData", dto);
+		map.put("clazz", dto);
 		return "main";
 	}
-	
+	@RequestMapping("/listStudents")
+	@ResponseBody
+	public WoDataTable<StudentDto> getDataTable(Integer draw, Long start, Long length,
+												@RequestParam("search[value]") String searchContent, @RequestParam("order[0][dir]") String dir, Map<String, Object> map) {
+		ClazzDto dto = (ClazzDto) map.get("clazz");
+		WoPage<StudentDto> page = studentService.getPageData(dto,start, length, searchContent, dir);
+		return new WoDataTable<StudentDto>(page, draw);
+	}
 	/**
 	 * 提交"修改"表单
 	 * @return
