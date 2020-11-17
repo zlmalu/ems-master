@@ -132,7 +132,7 @@ public class CourseTableServiceImpl implements CourseTableService {
         Pageable pageInput = PageRequest.of(start.intValue() / length.intValue(), length.intValue());
 
         if (WoUtil.isEmpty(searchContent)) {
-            pageData = courseTableRepository.findAllByIsOptional(majorId, "6", pageInput);
+            pageData = courseTableRepository.findAllByIsOptional("6", pageInput);
         } else {
             pageData = courseTableRepository.findAllByIsOptionalAndNameLike("%" + searchContent + "%", majorId, "6", pageInput);
         }
