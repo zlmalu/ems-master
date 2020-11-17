@@ -39,7 +39,7 @@
                 	                	{ "data": "clazzName" , "orderable" : false},
                 	                	                	{ "data": "majorName" , "orderable" : false},
                 	                    // 下面在操作列中添加了修改和删除按钮
-                    { "data": null , "orderable" : false, "defaultContent": "<a class='btn btn-primary btn-xs' name='update'>修改</a> <a class='btn btn-primary btn-warning btn-xs' name='delete'>删除</a>"}
+                    { "data": null , "orderable" : false, "defaultContent": "<a class='btn btn-success btn-xs' name='showStudents'>查看学生</a> <a class='btn btn-primary btn-xs' name='update'>修改</a> <a class='btn btn-primary btn-warning btn-xs' name='delete'>删除</a>"}
                 ];
             	var orderIndex = 0;
             	for (var i = 0; i < cols.length; i ++) {
@@ -63,6 +63,9 @@
                 $('#' + tableId + ' tbody').on( 'click', 'a', function () {
                 	// this表示a标签对应dom，$(this)将其转为jQuery对象，获取按钮所在行的json对象:ClazzDto
                     var data = table.row( $(this).parents('tr') ).data();
+                    if ($(this).attr('name') == 'showStudents') {
+                                    		showStudentsEmsClazz(data.id);
+                                    	}
                 	// 调用修改方法
                 	if ($(this).attr('name') == 'update') {
                 		updateEmsClazz(data.id);
@@ -86,6 +89,9 @@
             	location.href = "${pageContext.request.contextPath}/ems/clazz/create";
             }
             
+            function showStudentsEmsClazz (id) {
+            	location.href = "${pageContext.request.contextPath}/ems/clazz/showStudents?id=" + id;
+            }
             function updateEmsClazz (id) {
             	location.href = "${pageContext.request.contextPath}/ems/clazz/update?id=" + id;
             }

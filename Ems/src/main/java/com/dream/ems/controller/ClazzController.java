@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.dream.ems.dto.ClazzDto;
 import com.dream.ems.service.ClazzService;
 import wo.bsys.vo.WoDataTable;
-import wo.bsys.vo.WoSelectorParams;
+import com.dream.ems.vo.WoSelectorParams;
 import wo.common.entity.WoPage;
 import wo.common.exception.WoResultCode;
 import wo.common.util.WoJsonUtil;
@@ -87,6 +87,17 @@ public class ClazzController {
 		map.put("formData", dto);
 		return "main";
 	}
+	/**
+	 * 加载"查看班级所有学生"页面
+	 * @return
+	 */
+	@GetMapping("/showStudents")
+	public String showStudents (String id, Map<String, Object> map) {
+		ClazzDto dto = clazzService.getById (id);
+		map.put("url", "clazz/students.jsp");
+		map.put("formData", dto);
+		return "main";
+	}
 	
 	/**
 	 * 提交"修改"表单
@@ -131,8 +142,8 @@ public class ClazzController {
 	@RequestMapping("/selector/list")
 	@ResponseBody
 	public WoDataTable<ClazzDto> getSelectorDataTable(Integer draw, Long start, Long length,
-			@RequestParam("search[value]") String searchContent, @RequestParam("order[0][dir]") String dir) {
-		WoPage<ClazzDto> page = clazzService.getPageData(start, length, searchContent, dir);
+			@RequestParam("search[value]") String searchContent, @RequestParam("order[0][dir]") String dir,String params) {
+		WoPage<ClazzDto> page = clazzService.getPageData(start, length, searchContent, dir,params);
 		return new WoDataTable<ClazzDto>(page, draw);
 	}
 	}

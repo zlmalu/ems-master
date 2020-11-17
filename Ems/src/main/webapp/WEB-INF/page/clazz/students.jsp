@@ -23,7 +23,6 @@
                                                                                 <th>入学时间</th>
                                                                                 <th>所属学院</th>
                                                                                 <th>所属专业</th>
-                                                                                <th>所属班级</th>
                                                                                                                         <th>操作</th>
                                     </tr>
                                 </thead>
@@ -47,7 +46,6 @@
                 	                	{ "data": "grade" , "orderable" : false},
                 	                	{ "data": "collegeName" , "orderable" : false},
                 	                	{ "data": "majorName" , "orderable" : false},
-                	                	{ "data": "clazzName" , "orderable" : false},
                 	                	                    // 下面在操作列中添加了修改和删除按钮
                     { "data": null , "orderable" : false, "defaultContent": "<a class='btn btn-primary btn-xs' name='update'>修改</a> <a class='btn btn-primary btn-warning btn-xs' name='delete'>删除</a>"}
                 ];

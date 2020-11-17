@@ -72,6 +72,16 @@
 		                                </button>
 		                            </span>
 	                            </div>
+	                        </div>		                <div class="form-group">
+								<label class="col-sm-2 control-label">所属班级</label>
+								<div class="input-group">
+									<input type="hidden" name="clazzId">
+		                            <input type="text" class="form-control" name="clazzName" readonly>
+		                            <span class="input-group-btn" wo:url="ems/clazz/selector">
+		                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+		                                </button>
+		                            </span>
+	                            </div>
 	                        </div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">入学时间</label>
@@ -161,7 +171,10 @@
 	           		nameField : nameField,
 	           		singleSelect : true
 	           	};
-	        	if (idField == 'majorId') {// 
+	        	if (idField == 'clazzId') {//
+	        		loadOpts.params = $('#studentUserCreateForm input[name=majorId]').val();
+	        	}
+	        	if (idField == 'majorId') {//
 	        		loadOpts.params = $('#studentUserCreateForm input[name=collegeId]').val();
 	        	}
 	        	if (idField == 'collegeId') {// 

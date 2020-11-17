@@ -1,6 +1,7 @@
 package com.dream.ems.service;
 
 import com.dream.ems.dto.ClazzDto;
+import com.dream.ems.dto.MajorDto;
 import com.dream.ems.po.Clazz;
 import com.dream.ems.po.Course;
 import wo.common.entity.WoPage;
@@ -21,8 +22,8 @@ public interface ClazzService {
 	 * @param dir 排序方式
 	 * @return
 	 */
-	public WoPage<ClazzDto> getPageData(Long start, Long length, String searchContent, String dir);
-
+	WoPage<ClazzDto> getPageData(Long start, Long length, String searchContent, String dir);
+	WoPage<ClazzDto> getPageData(Long start, Long length, String searchContent, String dir, String params);
 	/**
 	 * 创建班级
 	 * @param dto

@@ -3,7 +3,10 @@ package com.dream.ems.service.impl;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
+import com.dream.ems.dto.MajorDto;
+import com.dream.ems.po.College;
 import com.dream.ems.po.Course;
+import com.dream.ems.po.Major;
 import com.dream.ems.repository.CourseRepository;
 import com.dream.ems.service.CourseService;
 import org.apache.log4j.LogManager;
@@ -72,6 +75,25 @@ public class ClazzServiceImpl implements ClazzService {
 		// 将PO转化为DTO
 		WoPage<ClazzDto> pr = ClazzDto.getPageData(pageData.getContent(), pageData.getTotalElements());
 		return pr;
+	}
+	@Override
+	public WoPage<ClazzDto> getPageData(Long start, Long length, String searchContent, String dir, String params) {
+		ExampleMatcher m = ExampleMatcher.matching();
+		Clazz qo = new Clazz();
+		if(!WoUtil.isEmpty(searchContent)) {
+			m.withMatcher("name", GenericPropertyMatchers.contains());
+			qo.setClazzName(searchContent);
+		}
+		if(!WoUtil.isEmpty(params)){
+			m.withMatcher("major.id", GenericPropertyMatchers.exact());
+			Major c = new Major();
+			c.setId(params);
+			qo.setMajor(c);
+		}
+		Example<Clazz> clazz = Example.of(qo, m);
+		Pageable p = PageRequest.of(start.intValue() / length.intValue(), length.intValue());
+		Page<Clazz> page = clazzRepository.findAll(clazz, p);
+		return new WoPage<ClazzDto> (ClazzDto.getDtos(page.getContent()), page.getTotalElements());
 	}
 
 	/**
