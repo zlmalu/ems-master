@@ -84,9 +84,9 @@ public class CourseTableServiceImpl implements CourseTableService {
 
     @Override
     public void saveElectiveCoursePlan(CourseTableDto data) {
-        Major major = majorRepository.findById(data.getMajorId()).get();
+//        Major major = majorRepository.findById(data.getMajorId()).get();
         CourseTable po = data.createPo();
-        po.setCollege(major.getCollege());
+//        po.setCollege(major.getCollege());
         courseTableRepository.save(po);
     }
 
