@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 
+import com.dream.ems.service.CourseTableService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.hamcrest.core.IsNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,6 +56,8 @@ public class TeacherController {
     private UserService userService;
     @Resource // @Autowired
     private StudentService studentService;
+    @Resource // @Autowired
+    private CourseTableService courseTableService;
 
     @GetMapping("/info/update")
     String infoUpdate(Map<String, Object> map) {
@@ -104,16 +108,21 @@ public class TeacherController {
     @RequestMapping("/studentinfo/list")
     @ResponseBody
     WoDataTable<StudentDto> getStudentList(Integer draw, Map<String, Object> map, Long start, Long length,
-                                           @RequestParam("search[value]") String searchContent, @RequestParam("order[0][dir]") String dir, String clazzId) {
-        System.out.println(clazzId + "xxxx");
-        List<StudentDto> studentDtos = studentService.findAllByClazzId(clazzId, dir);
+                                           @RequestParam("search[value]") String searchContent, @RequestParam("order[0][dir]") String dir, String clazzId, String coursetableId) {
+        List<StudentDto> studentDtos;
+        if(clazzId.equals("null")) {
+            CourseTableDto courseTableDto = courseTableService.findById(coursetableId);
+            studentDtos = courseTableDto.getStudentDtos();
+        }else
+                studentDtos = studentService.findAllByClazzId(clazzId, dir);
         WoPage<StudentDto> page = new WoPage<>(studentDtos, 35L);
         return new WoDataTable<>(page, draw);
     }
 
     @GetMapping("student/info")
-    String studentInfo(Map<String, Object> map, String clazzId) {
+    String studentInfo(Map<String, Object> map, String clazzId,String coursetableId) {
         map.put("clazzId", clazzId);
+        map.put("coursetableId", coursetableId);
         map.put("url", "teacher/course/studentinfo.jsp");
         return "main";
     }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
     String clazzId = (String) request.getAttribute("clazzId");
+    String coursetableId = (String) request.getAttribute("coursetableId");
 %>
 		<div id="page-wrapper">
 			<div class="row">
@@ -56,7 +57,7 @@
                     "serverSide": true, // 从服务端获取数据
                     "rowId" : 'id',// 设置主键字段名称
                     "ajax": {
-                        "url": "${pageContext.request.contextPath}/staff/teacher/studentinfo/list?clazzId=" + <%=clazzId%>, // 请求列表数据的url
+                        "url": "${pageContext.request.contextPath}/staff/teacher/studentinfo/list?clazzId=" + <%=clazzId%>+"&coursetableId="+<%=coursetableId%>, // 请求列表数据的url
                         "type": "GET" // http方法
                     },
                     "order": [ [ orderIndex, "asc" ] ] , // 排序

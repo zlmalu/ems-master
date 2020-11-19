@@ -149,86 +149,87 @@ $.ajax({
         async: true,
         success: function (result) {
             var data = result;
+            console.log(data);
                 $("#courseinfoTable td").html("");
                 for (var i = 0; data.length > i; i++) {
                     if (data[i].startWeek * 10 - 1 < $("#sel").val() * 10 && data[i].endWeek * 10 > $("#sel").val() * 10) {
                         var lesson = data[i].lesson;
                         var weekDay = data[i].weekDay;
                         if (lesson == "1" && weekDay == "1") {
-                            $("#o1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#o1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "2" && weekDay == "1") {
-                            $("#r1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#r1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "3" && weekDay == "1") {
-                            $("#s1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#s1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "4" && weekDay == "1") {
-                            $("#si1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#si1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "5" && weekDay == "1") {
-                            $("#w1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#w1").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
 
                         if (lesson == "1" && weekDay == "2") {
-                            $("#o2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#o2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "2" && weekDay == "2") {
-                            $("#r2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#r2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "3" && weekDay == "2") {
-                            $("#s2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#s2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "4" && weekDay == "2") {
-                            $("#si2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#si2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "5" && weekDay == "2") {
-                            $("#w2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#w2").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "1" && weekDay == "3") {
-                            $("#o3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#o3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "2" && weekDay == "3") {
-                            $("#r3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#r3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "3" && weekDay == "3") {
-                            $("#s3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#s3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "4" && weekDay == "3") {
-                            $("#si3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#si3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "5" && weekDay == "3") {
-                            $("#w3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#w3").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "1" && weekDay == "4") {
-                            $("#o4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#o4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "2" && weekDay == "4") {
-                            $("#r4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#r4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "3" && weekDay == "4") {
-                            $("#s4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#s4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "4" && weekDay == "4") {
-                            $("#si4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#si4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "5" && weekDay == "4") {
-                            $("#w4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#w4").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "1" && weekDay == "5") {
-                            $("#o5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#o5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "2" && weekDay == "5") {
-                            $("#r5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#r5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "3" && weekDay == "5") {
-                            $("#s5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#s5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "4" && weekDay == "5") {
-                            $("#si5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#si5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                         if (lesson == "5" && weekDay == "5") {
-                            $("#w5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ");'>查看学生</a>");
+                            $("#w5").html(data[i].courseName + '</br>' + '教室：' + data[i].classRoomName + '</br>' + "<a class='btn btn-primary btn-xs' onclick='studentInfo(" + data[i].clazzId + ","+data[i].id+");'>查看学生</a>");
                         }
                     }
                 }
@@ -237,7 +238,7 @@ $.ajax({
 
     })
 
-    function studentInfo(id) {
-        location.href = "${pageContext.request.contextPath}/staff/teacher/student/info?clazzId=" + id;
+    function studentInfo(clazzId,id) {
+        location.href = "${pageContext.request.contextPath}/staff/teacher/student/info?clazzId=" + clazzId+"&coursetableId="+id;
     }
 </script>
