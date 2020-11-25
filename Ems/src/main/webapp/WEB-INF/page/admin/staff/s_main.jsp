@@ -89,7 +89,7 @@
                 } );
              	
                 // 添加工具栏按钮，找到设置分页的div，并添加创建和批量删除按钮的a标签
-                $('#' + tableId + '_length').append (" <a class='btn btn-primary btn-sm' onclick='createStudentUser();'>创建</a> <a class='btn btn-primary btn-warning btn-sm' onclick='deleteStudentUsers();'>批量删除</a> <a class='btn btn-primary btn-warning btn-sm' onclick='exportStudents();'>导出</a>" );
+                $('#' + tableId + '_length').append (" <a class='btn btn-primary btn-sm' onclick='createStudentUser();'>创建</a> <a class='btn btn-primary btn-warning btn-sm' onclick='deleteStudentUsers();'>批量删除</a> " );
             });
 
             function createStudentUser () {

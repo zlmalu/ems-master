@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+	 <%@page import="java.util.List" %>
+             <%@page import="wo.bsys.dto.DictionaryDto" %>
+	<%
+        List<DictionaryDto> semesters = (List<DictionaryDto>)request.getAttribute ("semesters");
+    %>
 <style type="text/css">
 		td{
 			width: 100px;
@@ -13,109 +17,7 @@
 		}
 		
 </style>
-<script type="text/javascript">
-		$(function() {
-			$("#sel").change(function(){
-				$("#courseinfoTable td").html("");
-				$.ajax({
-					type:"get",
-					url:"${pageContext.request.contextPath}/coursetable/studentcourse/list",
-					async:true,
-					success:function(list){
-						var num = ($("#sel").val());
-						for (var i = 0;list.length>i; i++) {
-							var start = Number(list[i].startWeek);
-							var end = Number(list[i].endWeek);
-							if(num>=start && num<=end){
-								var weekDay = list[i].weekDay;
-								var lesson = list[i].lesson;
-								if(weekDay=="1"&&lesson=="1"){
-									$("#o1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="1"&&lesson=="2"){
-									$("#r1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="1"&&lesson=="3"){
-									$("#s1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="1"&&lesson=="4"){
-									$("#si1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="1"&&lesson=="5"){
-									$("#w1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-	//-----------------------------------------------------------------------------------------------------
-								if(weekDay=="2"&&lesson=="1"){
-									$("#o2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="2"&&lesson=="2"){
-									$("#r2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="2"&&lesson=="3"){
-									$("#s2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="2"&&lesson=="4"){
-									$("#si2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="2"&&lesson=="5"){
-									$("#w2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-	//-----------------------------------------------------------------------------------------------------
-								if(weekDay=="3"&&lesson=="1"){
-									$("#o3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="3"&&lesson=="2"){
-									$("#r3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="3"&&lesson=="3"){
-									$("#s3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="3"&&lesson=="4"){
-									$("#si3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="3"&&lesson=="5"){
-									$("#w3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-	//-----------------------------------------------------------------------------------------------------							
-								if(weekDay=="4"&&lesson=="1"){
-									$("#o4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="4"&&lesson=="2"){
-									$("#r4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="4"&&lesson=="3"){
-									$("#s4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="4"&&lesson=="4"){
-									$("#si4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="4"&&lesson=="5"){
-									$("#w4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-	//-----------------------------------------------------------------------------------------------------							
-								if(weekDay=="5"&&lesson=="1"){
-									$("#o5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="5"&&lesson=="2"){
-									$("#r5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="5"&&lesson=="3"){
-									$("#s5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="5"&&lesson=="4"){
-									$("#si5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-								if(weekDay=="5"&&lesson=="5"){
-									$("#w5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
-								}
-							}
-						}
-					}
-				})
-			})
-		})
 
-</script>
 		<div id="page-wrapper">
 			<div class="row">
                 <div class="col-lg-12">
@@ -125,10 +27,22 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-3">
+            <div class="col-md-3">
+                        <div class="form-group">
+                            <label>学期</label>
+                            <select id="semesterId">
+                             <% for (int i = 0; i < semesters.size(); i ++) {
+                            	                            	DictionaryDto dic = semesters.get(i);
+                            								%>
+                                <option value="<%=dic.getId()%>"><%=dic.getName()%></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                <div class="col-md-2">
                     <div class="form-group">
                         <label>周数</label>
-                        <select class="form-control" id="sel">
+                        <select id="sel">
                         	<option value="">请选择</option>
                           <%for(int i = 1;i<=18;i++){ %>
                             <option value="<%=i%>">第<%=i%>周</option>
@@ -200,4 +114,109 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-		</div>	
+		</div>
+
+		<script type="text/javascript">
+        		$(function() {
+        			$("#sel,#semesterId").change(function(){
+        			var sid = $("#semesterId").val();
+        				$("#courseinfoTable td").html("");
+        				$.ajax({
+        					type:"get",
+        					url:"${pageContext.request.contextPath}/coursetable/studentcourse/list?sid="+sid,
+        					async:true,
+        					success:function(list){
+        						var num = ($("#sel").val());
+        						for (var i = 0;list.length>i; i++) {
+        							var start = Number(list[i].startWeek);
+        							var end = Number(list[i].endWeek);
+        							if(num>=start && num<=end){
+        								var weekDay = list[i].weekDay;
+        								var lesson = list[i].lesson;
+        								if(weekDay=="1"&&lesson=="1"){
+        									$("#o1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="1"&&lesson=="2"){
+        									$("#r1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="1"&&lesson=="3"){
+        									$("#s1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="1"&&lesson=="4"){
+        									$("#si1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="1"&&lesson=="5"){
+        									$("#w1").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        	//-----------------------------------------------------------------------------------------------------
+        								if(weekDay=="2"&&lesson=="1"){
+        									$("#o2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="2"&&lesson=="2"){
+        									$("#r2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="2"&&lesson=="3"){
+        									$("#s2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="2"&&lesson=="4"){
+        									$("#si2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="2"&&lesson=="5"){
+        									$("#w2").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        	//-----------------------------------------------------------------------------------------------------
+        								if(weekDay=="3"&&lesson=="1"){
+        									$("#o3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="3"&&lesson=="2"){
+        									$("#r3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="3"&&lesson=="3"){
+        									$("#s3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="3"&&lesson=="4"){
+        									$("#si3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="3"&&lesson=="5"){
+        									$("#w3").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        	//-----------------------------------------------------------------------------------------------------
+        								if(weekDay=="4"&&lesson=="1"){
+        									$("#o4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="4"&&lesson=="2"){
+        									$("#r4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="4"&&lesson=="3"){
+        									$("#s4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="4"&&lesson=="4"){
+        									$("#si4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="4"&&lesson=="5"){
+        									$("#w4").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        	//-----------------------------------------------------------------------------------------------------
+        								if(weekDay=="5"&&lesson=="1"){
+        									$("#o5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="5"&&lesson=="2"){
+        									$("#r5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="5"&&lesson=="3"){
+        									$("#s5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="5"&&lesson=="4"){
+        									$("#si5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        								if(weekDay=="5"&&lesson=="5"){
+        									$("#w5").html(list[i].courseName+'</br>' +'教室：'+list[i].classRoomName+'</br>'+'老师：'+list[i].teacherName);
+        								}
+        							}
+        						}
+        					}
+        				})
+        			})
+        		})
+
+        </script>

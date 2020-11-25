@@ -201,10 +201,10 @@ public class StudentCourseController {
 	
 	@GetMapping("/studentcourse/list")
 	@ResponseBody
-	public List<CourseTableDto> getStudentCourseTable(Map<String,Object>map) {
+	public List<CourseTableDto> getStudentCourseTable(Map<String,Object>map,String sid) {
 		WoUser user = BSysUtil.getCurrentUser(map);
 		String StuNo = user.getLoginName();
-		return courseTableService.findAllByClazz(StuNo, "6");
+		return courseTableService.findAllByClazz(StuNo, sid);
 	}
 	
 	@GetMapping("/course/list")

@@ -61,7 +61,7 @@ public class ClassRoomController {
 	@GetMapping("/create")
 	public String create (Map<String, Object> map
 			) {
-		map.put("url", "classRoom/create.jsp");
+		map.put("url", "classroom/create.jsp");
 
 		return "main";
 	}
@@ -83,7 +83,7 @@ public class ClassRoomController {
 	@GetMapping("/update")
 	public String update (String id, Map<String, Object> map) {
 		ClassRoomDto dto = classRoomService.getById (id);
-		map.put("url", "classRoom/update.jsp");
+		map.put("url", "classroom/update.jsp");
 		map.put("formData", dto);
 		return "main";
 	}
